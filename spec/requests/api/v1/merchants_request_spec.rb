@@ -47,7 +47,7 @@ describe 'Merchants API' do
     created_merchant = Merchant.last
 
     expect(response).to be_successful
-    expect(created_merchant.name).to eq(merchant_params[:name])
+    expect(created_merchant.name).to eq(merchant_params[:attributes][:name])
   end
 
   it 'can update an existing merchant' do
