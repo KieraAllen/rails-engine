@@ -10,9 +10,9 @@ describe "Items API" do
 
     items = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items.count).to eq(3)
+    expect(items[:data].count).to eq(3)
 
-    items.each do |item|
+    items[:data].each do |item|
       expect(item).to have_key(:id)
       expect(item[:id]).to be_an(Integer)
 
@@ -32,7 +32,7 @@ describe "Items API" do
 
     get "/api/v1/items/#{id}"
 
-    item = JSON.parse(response.body, symbolize_names: true)
+    item = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(response).to be_successful
 
